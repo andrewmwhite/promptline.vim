@@ -1,14 +1,14 @@
 function __promptline_git_status {
   [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == true ]] || return 1
 
-  local added_symbol="●"
-  local unmerged_symbol="✖"
-  local modified_symbol="✚"
-  local clean_symbol="✔"
-  local has_untracked_files_symbol="…"
+  local added_symbol="${GIT_PROMPT_SYMBOL_STAGED:-«}"
+  local unmerged_symbol="${GIT_PROMPT_SYMBOL_UNMERGED:-✗}"
+  local modified_symbol="${GIT_PROMPT_SYMBOL_MODIFIED:-±}"
+  local clean_symbol="${GIT_PROMPT_SYMBOL_CLEAN:-✓}"
+  local has_untracked_files_symbol="${GIT_PROMPT_SYMBOL_UNTRACKED:-»}"
 
-  local ahead_symbol="↑"
-  local behind_symbol="↓"
+  local ahead_symbol="${GIT_PROMPT_SYMBOL_AHEAD:-↑}"
+  local behind_symbol="${GIT_PROMPT_SYMBOL_BEHIND:-↓}"
 
   local unmerged_count=0 modified_count=0 has_untracked_files=0 added_count=0 is_clean=""
 
